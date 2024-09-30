@@ -1,5 +1,5 @@
 
-# CV to HTML Portfolio Generator
+# CV to HTML Portfolio Website Generator
 
 ## Overview
 
