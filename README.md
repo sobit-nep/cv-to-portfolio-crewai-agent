@@ -1,9 +1,9 @@
 
-# CV to HTML Portfolio Website Generator
+# CV to HTML/CSS/JS-Portfolio Website Generator
 
 ## Overview
 
-The **CV to HTML Portfolio Generator** is an AI-powered application designed to transform your CV (in PDF or DOCX format) into a beautiful and responsive static HTML portfolio. Utilizing advanced tools such as CrewAI and Google Gemini, this project streamlines the process of showcasing your skills and experiences in a professional manner.
+The **CV to HTML/CSS/JS-Portfolio Website Generator** is an AI-powered application designed to transform your CV (in PDF or DOCX format) into a beautiful and responsive static HTML portfolio. Utilizing advanced tools such as CrewAI and Google Gemini, this project streamlines the process of showcasing your skills and experiences in a professional manner.
 
 ## Features
 
