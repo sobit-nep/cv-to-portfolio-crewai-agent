@@ -55,3 +55,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgements
 
 - Thanks to CrewAI and Google Gemini for their powerful tools that made this project possible.
+- P.S. As I've used the freely available Gemini model here, the output isn't that convincing. I tried OpenAI's gpt 4-o and the result was 100x better in terms of responsiveness and UI.
