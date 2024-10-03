@@ -1,0 +1,6 @@
+pdfplumber
+pdfminer.six
+crewai[tools]
+python-docx
+requests
+gradio
