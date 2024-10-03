@@ -4,6 +4,8 @@
 ## Overview
 
 The **CV to HTML/CSS/JS-Portfolio Website Generator** is an AI-powered application designed to transform your CV (in PDF or DOCX format) into a beautiful and responsive static HTML portfolio. Utilizing advanced tools such as CrewAI and Google Gemini, this project streamlines the process of showcasing your skills and experiences in a professional manner.
+![image](https://github.com/user-attachments/assets/0de1018d-a5f8-4d7f-b766-36ec79a144c9)
+![image](https://github.com/user-attachments/assets/546b6c7b-13f3-4e5c-bb2f-083d5b0ffdfe)
 
 ## Features
 
@@ -36,13 +38,23 @@ Make sure you have the following installed:
 
 ## OR
 
-1. Open your web browser and navigate to `https://huggingface.co/spaces/Sobit/cv-2-website`.
+1. Clone this repo.
+```
+   git clone https://github.com/sobit-nep/cv-to-portfolio-crewai-agent.git
+```
 
-3. Upload your CV in PDF or DOCX format.
+3. Install all the required dependencies.
+```
+   pip install -r requirements.txt
+   ```
+4. Start the gradio app by running,
+```
+   python gradio_app.py 
+   ```
 
-4. Click on the **Generate Portfolio** button to create your HTML portfolio.
+6. Click on the **Upload** button to upload and generate your portfolio.
 
-5. The generated HTML will be displayed, copy it, create new file with .html extension, paste the content and open it with browser to see the result.
+7. The preview webpage for generated code will be displayed, and you can download the complete code by clicking on the **Download Code** button.
 
 ## Contributing
 
