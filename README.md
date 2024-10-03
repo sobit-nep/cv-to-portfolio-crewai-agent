@@ -6,8 +6,11 @@
 The **CV to HTML/CSS/JS-Portfolio Website Generator** is an AI-powered application designed to transform your CV (in PDF or DOCX format) into a beautiful and responsive static HTML portfolio. Utilizing advanced tools such as CrewAI and Google Gemini, this project streamlines the process of showcasing your skills and experiences in a professional manner.
 
 Try now: https://huggingface.co/spaces/Sobit/cv-2-website
+
 Full tutorial: https://medium.com/@nepalsobit1
+
 ![image](https://github.com/user-attachments/assets/0de1018d-a5f8-4d7f-b766-36ec79a144c9)
+
 ![image](https://github.com/user-attachments/assets/546b6c7b-13f3-4e5c-bb2f-083d5b0ffdfe)
 
 ## Features
