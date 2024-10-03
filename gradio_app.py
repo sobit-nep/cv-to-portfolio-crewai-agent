@@ -1,4 +1,4 @@
-
+#import all dependencies
 import os
 from pathlib import Path
 import litellm
@@ -7,15 +7,14 @@ from crewai_tools import SerperDevTool
 import pdfplumber
 from docx import Document
 import gradio as gr
-
-
+import html
 
 # Set up API keys
 litellm.api_key = "YOUR_LLM_API_KEY"
 os.environ['SERPER_API_KEY'] = "YOUR_SERPER_API_KEY"
 
 # Define the LLM
-llm = "gemini/gemini-1.5-flash-exp-0827"  # Your LLM model
+llm = "gemini/gemini-1.5-flash-exp-0827"  # I have used google gemini-1.5-flash-exp-0827, you can replace it with your own llm
 
 # Initialize the tool for internet searching capabilities
 tool = SerperDevTool()
@@ -67,7 +66,6 @@ cv_analysis_task = Task(
 
 
 # Writing task for portfolio generation with enhanced UI requirements
-
 portfolio_task = Task(
     description=(
         "Generate a responsive HTML/CSS portfolio webpage based on the given CV analysis. "
@@ -107,7 +105,6 @@ crew = Crew(
 )
 
 
-
 # Function to process CV and generate portfolio
 def process_cv(file):
     try:
@@ -136,40 +133,42 @@ def save_html_to_file(html_content):
     return output_file_path
 
 
+
 def upload_file(filepath):
     name = Path(filepath).name
     html_content = process_cv(filepath)  # Get HTML content from the CV
 
-    # Clean the HTML content (but keep this simple to start with)
+    # Clean the HTML content and escape it for proper iframe embedding
     clean_html_output = html_content.replace("```html", '').replace("```", '').strip()
+    escaped_html_content = html.escape(clean_html_output)  # Escape HTML content
 
-    # Debugging print to check the HTML content
-    print("HTML content:", clean_html_output)
-
-    # Prepare an iframe to embed the HTML content
-    iframe_html = f"<iframe srcdoc='{clean_html_output}' style='width:100%; height:600px; border:none;'></iframe>"
-
-    # Debugging print to check the iframe HTML
-    # print("Iframe HTML:", iframe_html)
+    # Debugging print to check the escaped HTML content
+    #print("Escaped HTML content:", escaped_html_content)
 
     # Save the cleaned HTML content to a file (if you still want this feature)
     file_path = save_html_to_file(clean_html_output)
 
+    # Return a full HTML string with embedded iframe for preview
+    iframe_html = f"""
+    <iframe srcdoc="{escaped_html_content}" style="width:100%; height:1000px; border:none; overflow:auto;"></iframe>
+    """
     return iframe_html, gr.UploadButton(visible=False), gr.DownloadButton(label=f"Download Code", value=file_path, visible=True)
-
+    
 def download_file():
     return [gr.UploadButton(label=f"Regenerate", visible=True), gr.DownloadButton(visible=False)]
 
-
+# Gradio App
 with gr.Blocks() as demo:
     gr.Markdown("<center><h1> CV-2-Portfolio Site Generator</center></h1>")
-    gr.Markdown("<center><h2>Upload your CV in PDF or DOCX format for analysis and portfolio webpage generation.</center></h1>")
+    gr.Markdown("<center><h2>Upload your CV in PDF or DOCX format for analysis and portfolio webpage generation.</center></h2>")
 
     u = gr.UploadButton("Upload CV (.pdf or .docx)", file_count="single")
     d = gr.DownloadButton("Download Portfolio", visible=False)
 
-    # HTML output preview section (which will be updated with iframe content after file processing)
-    output_preview = gr.HTML(value="<div style='width:100%; height:600px; border:1px solid #ccc; text-align:center;'>Upload a file to preview the generated portfolio</div>")
+    # Use gr.HTML with larger iframe size to display the full preview
+    output_preview = gr.HTML(
+        value="<div style='width:100%; height:1000px; border:1px solid #ccc; text-align:center;'>Upload a file to preview the generated portfolio</div>"
+    )
 
     # Connect the upload button to the upload_file function and update the output preview
     u.upload(upload_file, u, [output_preview, u, d])
@@ -178,6 +177,3 @@ with gr.Blocks() as demo:
     d.click(download_file, None, [u, d])
 
 demo.launch(debug=True)
-
-
-
