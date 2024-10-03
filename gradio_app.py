@@ -11,8 +11,8 @@ import gradio as gr
 
 
 # Set up API keys
-litellm.api_key = "AIzaSyAlNlvB2unkbmkL6zweKVkjYEOVqIgovw4"
-os.environ['SERPER_API_KEY'] = "d9295b6ec268aad1fa375484f1e3ce556329973d"
+litellm.api_key = "YOUR_LLM_API_KEY"
+os.environ['SERPER_API_KEY'] = "YOUR_SERPER_API_KEY"
 
 # Define the LLM
 llm = "gemini/gemini-1.5-flash-exp-0827"  # Your LLM model
